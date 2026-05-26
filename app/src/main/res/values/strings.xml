@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ASTPredict</string>
+    <string name="app_subtitle">AI Bacterial Colony Detection</string>
+</resources>
