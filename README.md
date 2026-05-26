@@ -179,31 +179,6 @@ Make sure a physical Android device is connected via USB with **USB Debugging** 
 
 ---
 
-## 🩺 Troubleshooting
-
-### 1. `DeviceException: No connected devices!`
-* **Cause**: ADB daemon has lost connection to the physical Android device, or USB debugging is disabled.
-* **Solution**:
-  1. Unplug and replug the USB cable.
-  2. Toggle **USB Debugging** OFF and ON under *Settings > Developer Options* on the target device.
-  3. Reset the ADB server on your PC:
-     ```bash
-     /home/nikhil/Android/Sdk/platform-tools/adb kill-server
-     /home/nikhil/Android/Sdk/platform-tools/adb start-server
-     ```
-
-### 2. `InstallException: EOF` during APK installation
-* **Cause**: High-throughput data stream interrupted over low-quality or loose USB cables/ports while transferring the 56.8 MB package.
-* **Solution**: 
-  1. Bypass Gradle's internal transport by deploying using the direct adb command: `/home/nikhil/Android/Sdk/platform-tools/adb install -r app/build/outputs/apk/debug/app-debug.apk`.
-  2. Switch from a USB Hub/front-panel port to a high-speed motherboard-connected USB 3.0 port.
-
-### 3. Out-Of-Memory (OOM) Errors on Ultra-High Resolution Images
-* **Cause**: Decoding and manipulating massive raw multi-megapixel camera files inside the mobile runtime JVM.
-* **Solution**: ASTPredict includes automatic safe downsampling. The `loadBitmapFromUri` routine dynamically assesses image dimensions and adjusts `inSampleSize` to restrict loaded dimensions to a maximum of 4096px before passing to the letterboxing stage.
-
----
-
 ## 📊 Veterinary & AMR Research Context
 
 Pathogen identification is the critical first step in determining appropriate **Antimicrobial Susceptibility Testing (AST)** guidelines (such as **CLSI VET** standards). By providing instant, offline, on-device species identification directly from colony photographs, ASTPredict aids in:
