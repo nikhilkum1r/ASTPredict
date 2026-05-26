@@ -19,13 +19,13 @@ The application is built on a robust, offline-first MVVM (Model-View-ViewModel) 
 
 ```mermaid
 graph TD
-    subgraph UI Layer (Compose & Material 3)
+    subgraph "UI Layer (Compose & Material 3)"
         A[CameraScreen / Live Preview] -->|CameraX ImageAnalysis| B(Image Frame Analyzer)
         C[Gallery Import / Photo Selection] -->|URI Selection| D(Uri Processing)
         E[HomeScreen / Statistics / History]
     end
 
-    subgraph Data & ML Layer (C++ & Kotlin Core)
+    subgraph "Data & ML Layer (C++ & Kotlin Core)"
         B -->|Bitmap Buffer| F[ColonyDetector - TFLite Engine]
         D -->|Decoded Bitmap| F
         F -->|Memory-Mapped Inference| G[Interpreter / GPU Delegate]
@@ -33,7 +33,7 @@ graph TD
         H -->|Class-Agnostic NMS| I[Analysis Result Object]
     end
 
-    subgraph Persistence Layer (Offline Storage)
+    subgraph "Persistence Layer (Offline Storage)"
         I -->|Database Save| J[Room Database: AppDatabase]
         J -->|JSON Serializer| K[AnalysisEntity]
         K -->|DAO| L[(SQLite Local DB)]
