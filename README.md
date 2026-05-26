@@ -133,7 +133,7 @@ ASTPredict is trained to identify the following pathologically and economically 
 ### Step 1: Clone and Configure Environment
 Verify or update the location of the Android SDK in the `local.properties` file located at the root of the project:
 ```properties
-sdk.dir=/home/nikhil/Android/Sdk
+sdk.dir=/path/to/your/Android/Sdk
 ```
 
 ---
@@ -150,7 +150,7 @@ cp best_float32.tflite app/src/main/assets/best_float32.tflite
 ```
 
 > [!IMPORTANT]
-> Do **NOT** rename `best_float32.tflite` to another name, as it is dynamically mapped by the memory asset reader. If you do use a different model name, you must update the constant `MODEL_FILE` inside [ColonyDetector.kt](file:///home/nikhil/Startup/maam/ASTPredict-app/app/src/main/java/com/astpredict/app/data/ml/ColonyDetector.kt).
+> Do **NOT** rename `best_float32.tflite` to another name, as it is dynamically mapped by the memory asset reader. If you do use a different model name, you must update the constant `MODEL_FILE` inside [ColonyDetector.kt](app/src/main/java/com/astpredict/app/data/ml/ColonyDetector.kt).
 
 ---
 
@@ -171,10 +171,10 @@ Make sure a physical Android device is connected via USB with **USB Debugging** 
 
 ```bash
 # 1. Verify device is recognized
-/home/nikhil/Android/Sdk/platform-tools/adb devices
+adb devices
 
 # 2. Push and install the generated APK
-/home/nikhil/Android/Sdk/platform-tools/adb install -r app/build/outputs/apk/debug/app-debug.apk
+adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
 ---
