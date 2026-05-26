@@ -29,7 +29,7 @@ graph TD
         B -->|Bitmap Buffer| F[ColonyDetector - TFLite Engine]
         D -->|Decoded Bitmap| F
         F -->|Memory-Mapped Inference| G[Interpreter / GPU Delegate]
-        G -->|Output Tensor (1x28x8400)| H[Output Parser & Letterbox Inversion]
+        G -->|Output Tensor 1x28x8400| H[Output Parser & Letterbox Inversion]
         H -->|Class-Agnostic NMS| I[Analysis Result Object]
     end
 
